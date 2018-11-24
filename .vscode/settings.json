@@ -28,7 +28,10 @@
     "string": "cpp",
     "string_view": "cpp",
     "tuple": "cpp",
-    "utility": "cpp"
+    "utility": "cpp",
+    "hashtable": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp"
   },
   "python.formatting.provider": "black"
 }

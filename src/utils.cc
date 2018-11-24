@@ -1,6 +1,19 @@
 #include "utils.h"
 
+#include "constants.h"
+
 namespace torchjs {
+
+using namespace constants;
+
+torch::TensorOptions parseTensorOptions(const Napi::Object &obj) {
+  torch::TensorOptions options;
+  if (obj.Has(kDtype)) {
+    options = options.dtype(static_cast<torch::ScalarType>(
+        obj.Get(kDtype).As<Napi::Number>().Int32Value()));
+  }
+  return options;
+}
 
 ShapeArrayType tensorShapeToArray(Napi::Env env, const torch::Tensor &tensor) {
   Napi::EscapableHandleScope scope(env);

@@ -3,9 +3,13 @@
 #include <torch/torch.h>
 
 #include "Tensor.h"
+#include "constants.h"
 #include "utils.h"
 
 namespace torchjs {
+
+using namespace constants;
+
 namespace aten {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
@@ -20,7 +24,7 @@ Napi::Value rand(const Napi::CallbackInfo &info) {
   torch::TensorOptions options;
   if (len > 1 && info[len - 1].IsObject()) {
     auto option_obj = info[len - 1].As<Napi::Object>();
-    // TODO: Parse options
+    options = parseTensorOptions(option_obj);
     --len;
   }
 

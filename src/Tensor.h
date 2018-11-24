@@ -7,9 +7,6 @@
 
 namespace torchjs {
 
-const static std::string kData = "data";
-const static std::string kShape = "shape";
-
 class Tensor : public Napi::ObjectWrap<Tensor> {
 public:
   static Napi::Object Init(Napi::Env, Napi::Object exports);

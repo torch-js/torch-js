@@ -1,8 +1,11 @@
 #include "Tensor.h"
 
+#include "constants.h"
 #include "utils.h"
 
 namespace torchjs {
+
+using namespace constants;
 
 namespace {
 template <typename T>

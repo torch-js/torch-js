@@ -17,3 +17,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_JS_INC})
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/node_modules/node-addon-api")
 target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
 target_link_libraries(${PROJECT_NAME} "${TORCH_LIBRARIES}")
+
+add_definitions( -Wall -O2 -fexceptions )
