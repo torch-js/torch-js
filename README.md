@@ -6,7 +6,7 @@ TorchJS is a JS binding for PyTorch. Its primary objective is to allow running [
 
 In `test/torch_module.py`, you will find the defination of our test module and the code to generate the trace file.
 
-```
+```python
 class TestModule(torch.nn.Module):
     def __init__(self):
         super(TestModule, self).__init__()
@@ -17,7 +17,7 @@ class TestModule(torch.nn.Module):
 
 Once you have the trace file, you can load it into Node.js like this
 
-```
+```javascript
 var torch = require("torch-js");
 
 test_model_path = "test/test_model.pt";
@@ -45,7 +45,7 @@ console.log(e.toObject());
 
 The program above will print something like this on console. Your result will be different from this since `a` and `b` are random variables.
 
-```
+```javascript
 ScriptModule("/Users/kittipat/torchjs/tests/test_model.pt")
 { data:
    Float32Array [
@@ -93,19 +93,19 @@ ScriptModule("/Users/kittipat/torchjs/tests/test_model.pt")
 
 This project uses `cmake-js` to build Node extension. You will need to download [the preview build of libtorch](https://pytorch.org/get-started/locally/) and extract it to an accessible location. The build script assumes you put `libtorch` in the same directory as this library. E.g., if you checked out this library to `~/torch-js`, then `libtorch` should be at `~/libtorch`. Once you have that, you can run
 
-```
+```bash
 yarn install
 ```
 
 And, to test, run:
 
-```
+```bash
 node test/runTorch.js
 ```
 
 If it failed to run because `libmklml` is missing, you can download it from conda.
 
-```
+```bash
 conda install libmklml
 ```
 
@@ -113,13 +113,13 @@ If conda's `lib` directory is in your path, then you should be able to run the c
 
 On macOS, it would be:
 
-```
+```bash
 DYLD_LIBRARY_PATH=$CONDA_PREFIX/lib/ node tests/runTorch.js
 ```
 
 On Linux, it should be:
 
-```
+```bash
 LD_LIBRARY_PATH=$CONDA_PREFIX/lib/ node tests/runTorch.js
 ```
 
