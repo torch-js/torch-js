@@ -18,28 +18,25 @@ class TestModule(torch.nn.Module):
 Once you have the trace file, you can load it into Node.js like this
 
 ```javascript
-var torch = require("torch-js");
+const torch = require("torch-js");
 
-test_model_path = "test/test_model.pt";
+var test_model_path = "test/test_model.pt";
 
-script_module = new torch.ScriptModule(test_model_path);
+var script_module = new torch.ScriptModule(test_model_path);
 console.log(script_module.toString());
 
-a = torch.rand(1, 5);
+var a = torch.rand(1, 5);
 console.log(a.toObject());
-b = torch.rand([1, 5]);
+var b = torch.rand([1, 5]);
 console.log(b.toObject());
 
-c = script_module.forward(a, b);
+var c = script_module.forward(a, b);
 console.log(c.toObject());
 
-d = torch.Tensor.fromObject({
-  data: new Float32Array([0.1, 0.2, 0.3, 0.4, 0.5]),
-  shape: [1, 5],
-});
+var d = torch.tensor([[0.1, 0.2, 0.3, 0.4, 0.5]]);
 console.log(d.toObject());
 
-e = script_module.forward(c, d);
+var e = script_module.forward(c, d);
 console.log(e.toObject());
 ```
 
@@ -87,6 +84,38 @@ ScriptModule("/Users/kittipat/torchjs/tests/test_model.pt")
      1.359002947807312,
      1.668929100036621 ],
   shape: [ 1, 5 ] }
+```
+
+### Tensor creation
+
+There are several ways to create tensors
+
+```javascript
+// With TypedArray and shape array
+var a = torch.tensor(
+  new Float32Array([0.1, 0.2, 0.3, 0.4, 0.5]), {
+    shape: [1, 5],
+  });
+
+// With array, will create tensor with float32 data type
+var b = torch.tensor([
+  [0.1, 0.2, 0.3],
+  [0.4, 0.5, 0.6],
+]);
+
+// With array and option object
+var c = torch.tensor([
+  [0.1, 0.2, 0.3],
+  [0.4, 0.5, 0.6],
+], {
+  dtype: torch.float64
+});
+
+// With torch.Tensor.fromObject()
+var d = torch.Tensor.fromObject({
+  data: new Float32Array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6]),
+  shape: [2, 3],
+});
 ```
 
 ## Installation

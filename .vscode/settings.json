@@ -33,5 +33,6 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp"
   },
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true
 }
