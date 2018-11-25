@@ -129,7 +129,7 @@ yarn install
 And, to test, run:
 
 ```bash
-node test/runTorch.js
+node tests/runTorch.js
 ```
 
 If it failed to run because `libmklml` is missing, you can download it from conda.

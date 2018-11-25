@@ -1,5 +1,5 @@
 "use strict";
-const torch = require("..");
+const torch = require("../dist");
 
 var test_model_path = __dirname + "/test_model.pt";
 
