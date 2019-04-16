@@ -6,9 +6,10 @@
   "author": "Kittipat Virochsiri",
   "license": "MIT",
   "scripts": {
-    "preinstall": "yarn fetch-deps && yarn compile && yarn build",
+    "preinstall": "yarn fetch-deps && yarn compile && yarn copy-libs && yarn build",
     "build": "rm -rf dist/ && tsc && cp lib/torch.* dist/",
-    "fetch-deps": "./fetch_native_deps.sh",
+    "fetch-deps": "scripts/fetch-native-deps.sh",
+    "copy-libs": "scripts/copy-libs.sh",
     "compile": "cmake-js compile --CDCMAKE_PREFIX_PATH=./extern/libtorch",
     "rebuild": "cmake-js rebuild --CDCMAKE_PREFIX_PATH=./extern/libtorch"
   },
