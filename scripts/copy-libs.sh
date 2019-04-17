@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Version for distribution?
-#mkdir -p dist/native/
-#cp build/Release/torch-js.node dist/native
-#cp extern/libtorch/lib dist/native
+# TODO: Only copy necessary files for distribution
 
 EXTERN_DIR=extern
 LIBTORCH_DIR=$EXTERN_DIR/libtorch/

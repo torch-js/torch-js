@@ -7,10 +7,13 @@ if (NOT MSVC)
   set(CMAKE_C_STANDARD 11)
 endif()
 
-find_package(Torch REQUIRED)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  # Without this set, the package is only found by absolute path, so you can't move it on disk
+  set(INSTALL_RPATH "@loader_path")
+  set(CMAKE_BUILD_WITH_INSTALL_RPATH 1)
+endif()
 
-set(INSTALL_RPATH "@loader_path")
-set(CMAKE_BUILD_WITH_INSTALL_RPATH 1)
+find_package(Torch REQUIRED)
 
 include_directories(${CMAKE_JS_INC})
 file(GLOB SOURCE_FILES "src/*.cc" "src/*.h")
