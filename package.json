@@ -8,12 +8,16 @@
   "scripts": {
     "install": "yarn compile && yarn build",
     "build": "rm -rf dist/ && tsc && cp lib/torch.* dist/",
+    "test": "jest",
     "compile": "cmake-js compile --CDCMAKE_PREFIX_PATH=../libtorch",
     "rebuild": "cmake-js rebuild --CDCMAKE_PREFIX_PATH=../libtorch"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "cmake-js": "^4.0.1",
+    "jest": "^24.7.1",
     "node-addon-api": "^1.6.1",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.1.6"
   },
   "dependencies": {
